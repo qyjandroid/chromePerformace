@@ -33,14 +33,23 @@ body {
   display: block;
   font-size: 1em;
   padding: 1em;
-  margin-top: 150px;
   background-color: beige;
   color: black;
 }
-
-.subtract:disabled {
-  opacity: 0.2;
+.subtract{
+    margin-top: 10px;
 }
+.add{
+    
+    margin-top: 150px;
+}
+.stop{
+    margin-top: 10px;
+}
+
+/* .subtract:disabled {
+  opacity: 0.2;
+} */
 
 .mover {
   height: 3vw;

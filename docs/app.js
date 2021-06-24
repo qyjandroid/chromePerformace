@@ -30,7 +30,7 @@
         add = document.querySelector('.add');
 
     //总共演示三种方案
-    app.scheme = 3;
+    app.scheme = 1;
     app.count = minimum;
     app.enableApp = true;
   
@@ -137,7 +137,7 @@
     add.addEventListener('click', function (e) {
       cancelAnimationFrame(frame);
       app.count += incrementor;
-      subtract.disabled = false;
+    //   subtract.disabled = false;
       app.init();
       add.textContent = 'Add ' + app.count;
       frame = requestAnimationFrame(app.update);
@@ -145,13 +145,16 @@
   
     subtract.addEventListener('click', function () {
       cancelAnimationFrame(frame);
-      app.count -= incrementor;
+      app.count = incrementor;
+      if(app.scheme<3){
+        app.scheme=app.scheme+1;
+      }else{
+        app.scheme=1;
+      }
+      add.textContent = 'Add ' + incrementor;
+      subtract.textContent = '方案: ' + app.scheme;
       app.init();
       frame = requestAnimationFrame(app.update);
-      if (app.count === minimum) {
-        subtract.disabled = true;
-      }
-      add.textContent = 'Add ' + app.count;
     });
   
     function debounce(func, wait, immediate) {
@@ -180,7 +183,7 @@
     window.addEventListener('resize', onResize);
   
     add.textContent = 'Add ' + incrementor;
-    subtract.textContent = 'Subtract ' + incrementor;
+    subtract.textContent = '方案: ' + app.scheme;
     document.body.removeChild(proto);
     proto.classList.remove('.proto');
     app.init();
